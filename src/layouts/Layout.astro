@@ -1,5 +1,6 @@
 ---
-import "../styles/global.css";
+import { ThemeInitScript } from "@starwind-ui/astro/theme";
+import "@/styles/starwind.css";
 ---
 
 <!doctype html>
@@ -7,7 +8,8 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Astro + Starwind UI</title>
+    <ThemeInitScript />
   </head>
   <body>
     <slot />

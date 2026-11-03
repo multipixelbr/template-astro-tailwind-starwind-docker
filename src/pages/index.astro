@@ -1,7 +1,132 @@
 ---
+import { Badge } from "@/components/starwind/badge";
+import { Button } from "@/components/starwind/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/starwind/card";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/starwind/dialog";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownLabel,
+  DropdownSeparator,
+  DropdownTrigger,
+} from "@/components/starwind/dropdown";
+import { Input } from "@/components/starwind/input";
+import { Label } from "@/components/starwind/label";
+import { ThemeToggle } from "@/components/starwind/theme-toggle";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h1>Hello, World!</h1>
+  <main class="mx-auto flex min-h-svh max-w-3xl flex-col gap-8 px-6 py-12">
+    <header class="flex items-start justify-between gap-4">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <h1 class="font-heading text-3xl font-semibold tracking-tight">Astro + Starwind UI</h1>
+          <Badge variant="secondary">Template</Badge>
+        </div>
+        <p class="text-muted-foreground">
+          Componentes nativos para Astro, sem React e sem ilhas de JavaScript.
+        </p>
+      </div>
+      <ThemeToggle ariaLabel="Alternar tema" />
+    </header>
+
+    <Card>
+      <CardHeader>
+        <CardTitle class="font-heading">Comece por aqui</CardTitle>
+        <CardDescription>
+          Todos os componentes são copiados para <code>src/components/starwind</code> e podem ser
+          personalizados livremente.
+        </CardDescription>
+      </CardHeader>
+      <CardContent class="grid gap-4">
+        <div class="grid gap-2">
+          <Label for="email">E-mail</Label>
+          <Input id="email" type="email" placeholder="voce@exemplo.com" />
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <Button variant="primary">Primário</Button>
+          <Button variant="secondary">Secundário</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+        </div>
+      </CardContent>
+      <CardFooter class="flex flex-wrap gap-2">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline">Abrir dialog</Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Dialog nativo</DialogTitle>
+              <DialogDescription>
+                Sem React: comportamento controlado pelo Runtime do Starwind.
+              </DialogDescription>
+            </DialogHeader>
+            <div class="py-4 text-sm text-muted-foreground">
+              Você pode fechar com o botão abaixo ou pressionando Esc.
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">Cancelar</Button>
+              </DialogClose>
+              <Button variant="primary">Salvar</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        <Dropdown>
+          <DropdownTrigger asChild>
+            <Button variant="secondary">Abrir menu</Button>
+          </DropdownTrigger>
+          <DropdownContent>
+            <DropdownLabel>Minha conta</DropdownLabel>
+            <DropdownSeparator />
+            <DropdownItem>Perfil</DropdownItem>
+            <DropdownItem>Configurações</DropdownItem>
+            <DropdownSeparator />
+            <DropdownItem disabled>Sair</DropdownItem>
+          </DropdownContent>
+        </Dropdown>
+      </CardFooter>
+    </Card>
+
+    <section class="grid gap-4 sm:grid-cols-3">
+      <Card>
+        <CardHeader>
+          <CardTitle class="font-heading text-base">Astro nativo</CardTitle>
+          <CardDescription>Zero dependências de React ou Radix.</CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle class="font-heading text-base">Tailwind v4</CardTitle>
+          <CardDescription>Tokens e temas prontos para dark mode.</CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle class="font-heading text-base">Docker ready</CardTitle>
+          <CardDescription>Build standalone com @astrojs/node.</CardDescription>
+        </CardHeader>
+      </Card>
+    </section>
+  </main>
 </Layout>
